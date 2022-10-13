@@ -1,12 +1,27 @@
-const $inputBirth = document.querySelector( '[data-birth]' );
+const $inputs = document.querySelectorAll( 'input' );
 const ageToBeOlder = 18
 
+console.log( $inputs );
 
-$inputBirth.addEventListener( 'blur', event => {
-    
-    // Valida si la fecha del usuario pertenece a un mayor de edad
-    validateDate( event.target );
+$inputs.forEach( input => {
+    input.addEventListener( 'blur', event => {
+        validateDate( event.target );       // Valida si la fecha del usuario pertenece a un mayor de edad
+    });
 });
+
+
+function validateDataSet( element ) {
+    const type = element.dataset.type;
+
+    // Valida si el tipo de campo a validar existe
+    if( fieldValidators[ type ] )
+        fieldValidators[ type ] ( element );
+
+}
+
+const fieldValidators = {
+    "input-birth": ( element ) => validateDate( element )
+}
 
 function validateDate( inputElement ) {
     const
