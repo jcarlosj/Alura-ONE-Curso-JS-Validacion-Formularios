@@ -1,0 +1,1 @@
+export const AGE_TO_BE_OLDER = 18;
